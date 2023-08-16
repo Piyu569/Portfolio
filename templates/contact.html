@@ -1,0 +1,107 @@
+{% load static %}
+{% include 'loading.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact - My Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'contact.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  <style>
+    body {
+      background-image: url("{% static 'bgg.jpg' %}");
+      background-size: cover;
+      background-position: center;
+    }
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="experience">Experience</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cntr" >
+    <div class="form-container">
+      <div id="success-message" class="hidden">
+        <p>Success! Your message has been sent.</p>
+      </div>
+      <form class="form" id="contact-form" method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required="">
+        </div>
+        <div class="form-group">
+          <label for="email">Company Email</label>
+          <input type="text" id="email" name="email" required="">
+        </div>
+        <div class="form-group">
+          <label for="textarea">How Can We Help You?</label>
+          <textarea name="textarea" id="textarea" rows="10" cols="50" required=""></textarea>
+        </div>
+        <button data-text="Awesome" class="button" type="submit">
+          <span class="actual-text">&nbsp;Submit&nbsp;</span>
+          <span class="hover-text" aria-hidden="true">&nbsp;Submit&nbsp;</span>
+      </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'contact.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      $('#contact-form').submit(function(e) {
+        e.preventDefault(); // Prevent form submission
+        var form = $(this);
+        $.ajax({
+          url: form.attr('action'),
+          type: 'POST',
+          data: form.serialize(),
+          success: function(response) {
+            $('#success-message').removeClass('hidden');
+            form.trigger('reset');
+            // You can also perform additional actions here if needed
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
