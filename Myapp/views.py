@@ -16,6 +16,9 @@ def experience(request):
 def contact(request):
     return render (request, 'contact.html')
 
+def aboutme(request):
+    return render (request, 'aboutme.html')
+
 
 
 def contact_me(request):
