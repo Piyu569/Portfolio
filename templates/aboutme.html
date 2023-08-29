@@ -1,11 +1,179 @@
+{% load static %}
+{% include 'loading.html' %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exprience</title>
+    <style>
+        /* Reset some default margin and padding on the body */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Center the center-container */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .book {
+            position: relative;
+            border-radius: 10px;
+            width: 390px;
+            height: 470px;
+            background-color: whitesmoke;
+            -webkit-box-shadow: 1px 1px 12px #000;
+            box-shadow: 1px 1px 12px #000;
+            -webkit-transform: preserve-3d;
+            -ms-transform: preserve-3d;
+            transform: preserve-3d;
+            -webkit-perspective: 2000px;
+            perspective: 2000px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center
+        }
+
+        .cover {
+            top: 0;
+            position: absolute;
+            background-color: lightgray;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform-origin: 0;
+            -ms-transform-origin: 0;
+            transform-origin: 0;
+            -webkit-box-shadow: 1px 1px 12px #000;
+            box-shadow: 1px 1px 12px #000;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .book:hover .cover {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform: rotatey(-80deg);
+            -ms-transform: rotatey(-80deg);
+            transform: rotatey(-80deg);
+        }
+
+        .p {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .book .inside_p .p {
+            font-size: 12px;
+            font-weight: bolder;
+            margin-left: 10px;
+        }
+
+        /* NAVBAR */
+
+
+        .navbar {
+            height: 80px;
+            background-color: #000000;
+            /* You can adjust the height as needed */
+        }
+
+        /* Increase the height of the navbar brand text (optional) */
+        .navbar-brand {
+            font-size: 24px;
+            margin-left: 20px;
+            /* You can adjust the font size as needed */
+        }
+
+        /* Increase the height of the navbar links (optional) */
+        .navbar-nav .nav-link {
+            padding-top: 30px;
+            /* You can adjust the padding as needed */
+            padding-bottom: 30px;
+            /* You can adjust the padding as needed */
+        }
+    </style>
 </head>
+
 <body>
-    <h1>About me</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Piyush Bodhani</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutme">About Me</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Aboutme Book--->
+    <div class="center-container"> <!-- Create a container for centering the book -->
+        <!-- Aboutme Book -->
+        <div class="book">
+            <div class="inside_p">
+                <p>Hello, I'm Piyush Bodhani, an AWS Data Engineer with over 1.5 years of hands-on experience. I have a
+                    proven track record of successfully managing and delivering data engineering projects on AWS and
+                    Databricks while collaborating with a diverse range of clients.<br>
+
+                    My expertise lies in designing and implementing efficient data pipelines, optimizing data storage
+                    solutions, and ensuring data quality and reliability. I'm passionate about turning complex data into
+                    valuable insights that drive informed decisions.<br>
+
+                    I thrive on staying current with the latest data engineering technologies and methodologies to
+                    provide innovative solutions. My dedication to excellence, analytical mindset, and problem-solving
+                    skills enable me to deliver practical results for businesses.<br>
+
+                    Thank you for visiting my profile, and I'm excited about the possibility of working together on
+                    exciting data engineering challenges.
+
+                </p>
+            </div>
+            <div class="cover">
+                <p>Glide Over <br> to discover more </p>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
